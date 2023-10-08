@@ -19,4 +19,6 @@ public class DashboardController {
     public List<MedicineStatus> getMedicineStatus(){
         return orderMedicineService.getMedicineStatus();
     }
+
+
 }
