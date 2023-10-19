@@ -3,6 +3,7 @@ package com.banhauniversity.sidalih.service;
 import com.banhauniversity.sidalih.entity.Order;
 import com.banhauniversity.sidalih.exception.CustomException;
 import com.banhauniversity.sidalih.exception.ExceptionMessage;
+import com.banhauniversity.sidalih.repository.InventoryRepository;
 import com.banhauniversity.sidalih.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ public class OrderService {
 
     @Autowired
     OrderRepository orderRepository;
+
+    @Autowired
+    InventoryRepository inventoryRepository;
 
     public List<Order> findAll(){
         return orderRepository.findAll();
