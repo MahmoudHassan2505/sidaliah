@@ -35,6 +35,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST,"/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,"/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE,"/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
         );
 
         //to tell Spring that we use Basic Authentication
