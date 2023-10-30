@@ -26,8 +26,8 @@ public class SecurityConfig {
     //This method to add Roles Authorizations
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+        http.cors(cors->cors.disable());
         //adding roles Auth
-
         http.authorizeHttpRequests(configure->
                 configure.requestMatchers(HttpMethod.GET,"/**").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.GET,"/**").hasRole("ADMIN")
