@@ -31,6 +31,10 @@ public class Medicine {
     @JsonIgnore
     private List<OrderMedicine> orderMedicines;
 
+    @OneToMany(mappedBy = "medicine")
+    @JsonIgnore
+    private List<UseageMedicine> useageMedicines;
+
     public long getId() {
         return id;
     }
@@ -125,5 +129,13 @@ public class Medicine {
 
     public void setOrderMedicines(List<OrderMedicine> orderMedicines) {
         this.orderMedicines = orderMedicines;
+    }
+
+    public List<UseageMedicine> getUseageMedicines() {
+        return useageMedicines;
+    }
+
+    public void setUseageMedicines(List<UseageMedicine> useageMedicines) {
+        this.useageMedicines = useageMedicines;
     }
 }

@@ -26,5 +26,5 @@ public class Useage {
     private Prescription prescription;
 
     @OneToMany(mappedBy = "useage")
-    List<UseageMedicine> useageMedicines;
+    private List<UseageMedicine> useageMedicines;
 }

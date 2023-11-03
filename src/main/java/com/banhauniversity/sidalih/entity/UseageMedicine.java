@@ -20,12 +20,10 @@ public class UseageMedicine {
 
     @ManyToOne
     @JoinColumn(name = "useage_id")
-    @JsonIgnore
     private Useage useage;
 
     @ManyToOne
     @JoinColumn(name = "medicine_id")
-    @JsonIgnore
     private Medicine medicine;
 
     private long price;
