@@ -25,9 +25,9 @@ public class UseageController {
         return useageService.findById(id);
     }
 
-    @PostMapping
-    public Useage add(@RequestBody Useage useage){
-        return useageService.add(useage);
+    @PostMapping()
+    public Useage add(@RequestBody Useage useage,@RequestParam("isChronic") boolean type){
+        return useageService.add(useage,type);
     }
 
     @PutMapping

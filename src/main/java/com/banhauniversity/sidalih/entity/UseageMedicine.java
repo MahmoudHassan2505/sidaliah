@@ -17,15 +17,18 @@ public class UseageMedicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private long amount;
+    private long price;
 
     @ManyToOne
     @JoinColumn(name = "useage_id")
+    @JsonIgnore
     private Useage useage;
 
     @ManyToOne
     @JoinColumn(name = "medicine_id")
     private Medicine medicine;
 
-    private long price;
+
 
 }

@@ -1,5 +1,6 @@
 package com.banhauniversity.sidalih.service;
 
+import com.banhauniversity.sidalih.entity.Inventory;
 import com.banhauniversity.sidalih.entity.Order;
 import com.banhauniversity.sidalih.entity.OrderMedicine;
 import com.banhauniversity.sidalih.exception.CustomException;
@@ -11,19 +12,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
 
     @Autowired
     OrderRepository orderRepository;
-
     @Autowired
     InventoryRepository inventoryRepository;
-
     @Autowired
     OrderMedicineRepository orderMedicineRepository;
-
+    @Autowired
+    InventoryService inventoryService;
 
     public List<Order> findAll(){
         return orderRepository.findAll();
@@ -42,11 +43,16 @@ public class OrderService {
         orderRepository.findById(order.getId()).ifPresent((a)->{
             throw new CustomException(ExceptionMessage.ID_is_Exist);
         });
+
         Order savedOrder = orderRepository.save(order);
 
         order.getOrderMedicines().forEach(orderMedicine -> {
             orderMedicine.setOrder(savedOrder);
             orderMedicineRepository.save(orderMedicine);
+        });
+
+        order.getOrderMedicines().forEach((orderMedicine)->{
+            inventoryService.add(Inventory.builder().medicine(orderMedicine.getMedicine()).amount(orderMedicine.getAmount()).price(orderMedicine.getPrice()).expireDate(orderMedicine.getExpirydate()).build());
         });
         return order;
     }
