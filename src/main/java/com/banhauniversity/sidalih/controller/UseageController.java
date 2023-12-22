@@ -3,14 +3,16 @@ package com.banhauniversity.sidalih.controller;
 import com.banhauniversity.sidalih.entity.Useage;
 import com.banhauniversity.sidalih.repository.UseageRepository;
 import com.banhauniversity.sidalih.service.UseageService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.persistence.GeneratedValue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Role;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/useages")
+@RequestMapping("/pharmacy/useages")
 public class UseageController {
 
     @Autowired private UseageService useageService;
